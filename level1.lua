@@ -48,14 +48,6 @@ function scene:create( event )
 
 	local sceneGroup = self.view
 
-	-- create a grey rectangle as the backdrop
-	--[[
-	local background = display.newImageRect( "./img/bg.png", 320, 568 )
-	background.x, background.y = 0, 0
-	background.anchorX = 0
-	background.anchorY = 0
-	sceneGroup:insert( background )
-	--]]
 	display.setDefault("background", 88/255, 110/255, 254/255)
 
 	self.ledderGroup = display.newGroup()
@@ -65,7 +57,6 @@ function scene:create( event )
 	self.lastActiveWindowIndex = 0
 	self.firstActiveWindowIndex = 0
 
-	-- make a crate (off-screen), position it, and rotate slightly
 	local parachute = display.newImageRect(self.ledderGroup, "./img/parachute.png", 80, 110 )
 	parachute.x, parachute.y = 160, 55
 	parachute.rotation = 0
@@ -73,7 +64,6 @@ function scene:create( event )
 	physics.addBody( parachute, { density=0.1, friction=0.3, bounce=0.3, box = { halfWidth=100, halfHeight=10, x=0, y=-30, angle=0 } } )
 	parachute.linearDamping = 100
 
-	-- make a crate (off-screen), position it, and rotate slightly
 	local egg = display.newImageRect(self.ledderGroup, "./img/egg2.png", 50, 66 )
 	egg.x, egg.y = 160, 120
 	egg.rotation = 0
@@ -84,14 +74,12 @@ function scene:create( event )
 	physics.newJoint( "distance", parachute, egg, 125, 30, 160, 120 )
 	physics.newJoint( "distance", parachute, egg, 195, 30, 160, 120 )
 
-	--rope ile
-	--local rope1 = physics.newJoint( "rope", parachute, crate, -30, -15, -10, 0 )
-	--rope1.maxLength = 105
-	--local rope2 = physics.newJoint( "rope", parachute, crate, 30, -15, 10, 0 )
-	--rope2.maxLength = 105
-
-	--distance joint ile
-
+	--[[rope ile
+	local rope1 = physics.newJoint( "rope", parachute, crate, -30, -15, -10, 0 )
+	rope1.maxLength = 105
+	local rope2 = physics.newJoint( "rope", parachute, crate, 30, -15, 10, 0 )
+	rope2.maxLength = 105
+	--]]
 	
 end
 
